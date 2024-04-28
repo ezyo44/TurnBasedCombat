@@ -1,0 +1,132 @@
+[gd_scene load_steps=17 format=3 uid="uid://gxky7r2ef7k0"]
+
+[ext_resource type="Texture2D" uid="uid://lyswv33laavu" path="res://Sprites/Worm/Idle.png" id="1_0y22a"]
+[ext_resource type="Script" path="res://Scripts/Worm.gd" id="1_hma43"]
+[ext_resource type="Resource" uid="uid://i7pi0tfcrh5r" path="res://Components/Resources/Worm.tres" id="2_t6s5o"]
+[ext_resource type="PackedScene" uid="uid://ct5a7bhml7swu" path="res://Components/health_component.tscn" id="3_0ihnw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlrw0"]
+bg_color = Color(0.988235, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o885"]
+bg_color = Color(0, 0.639826, 0.173702, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksqc7"]
+atlas = ExtResource("1_0y22a")
+region = Rect2(0, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xjlm"]
+atlas = ExtResource("1_0y22a")
+region = Rect2(90, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36le7"]
+atlas = ExtResource("1_0y22a")
+region = Rect2(180, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuvmt"]
+atlas = ExtResource("1_0y22a")
+region = Rect2(270, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oglk1"]
+atlas = ExtResource("1_0y22a")
+region = Rect2(360, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4bvr"]
+atlas = ExtResource("1_0y22a")
+region = Rect2(450, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhxva"]
+atlas = ExtResource("1_0y22a")
+region = Rect2(540, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbhyf"]
+atlas = ExtResource("1_0y22a")
+region = Rect2(630, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfix1"]
+atlas = ExtResource("1_0y22a")
+region = Rect2(720, 0, 90, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2ida"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksqc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xjlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36le7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuvmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oglk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4bvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhxva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbhyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfix1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyContainer" type="VBoxContainer" node_paths=PackedStringArray("enemy_health_bar", "health_controller")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 1028.0
+grow_horizontal = 2
+script = ExtResource("1_hma43")
+enemy_health_bar = NodePath("ProgressBar")
+health_controller = NodePath("Health_component")
+enemy = ExtResource("2_t6s5o")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_dlrw0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8o885")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "HP: 100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(358.5, 547)
+scale = Vector2(7.92222, 10.5333)
+sprite_frames = SubResource("SpriteFrames_t2ida")
+
+[node name="Health_component" parent="." instance=ExtResource("3_0ihnw")]

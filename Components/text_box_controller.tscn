@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxdephnhy07lf"]
+
+[ext_resource type="Script" path="res://Scripts/Text_Box_Controller.gd" id="1_bo7co"]
+
+[node name="Text_Box_Controller" type="Node"]
+script = ExtResource("1_bo7co")

@@ -1,0 +1,163 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0wak65hiot22"]
+
+[ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_31jtf"]
+[ext_resource type="PackedScene" uid="uid://gxky7r2ef7k0" path="res://Components/Worm.tscn" id="3_0214f"]
+[ext_resource type="Script" path="res://Scripts/Health_component.gd" id="4_j3o4h"]
+[ext_resource type="Script" path="res://Scripts/Text_Box_Controller.gd" id="5_xmcdw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3obm3"]
+bg_color = Color(0.988235, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eflyk"]
+bg_color = Color(2.16588e-07, 0.64134, 0.11044, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2cla"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqivn"]
+bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="Battle_scene" type="Node2D" node_paths=PackedStringArray("text_box_controller", "health_controller")]
+script = ExtResource("1_31jtf")
+text_box_controller = NodePath("Text_Box_Controller")
+health_controller = NodePath("Health_component")
+Enemy_scene = ExtResource("3_0214f")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -255.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_3obm3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eflyk")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayerContainer/VBoxContainer/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "HP: 100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Attack" type="Button" parent="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_w2cla")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w2cla")
+text = "Attack"
+
+[node name="Defende" type="Button" parent="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_w2cla")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w2cla")
+text = "Defend
+"
+
+[node name="Skills" type="Button" parent="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_w2cla")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w2cla")
+text = "Skills
+"
+
+[node name="Control2" type="Control" parent="CanvasLayer/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="TextBox" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.0152778
+anchor_top = 0.05625
+anchor_right = 0.984722
+anchor_bottom = 0.267969
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vqivn")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/TextBox"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = -5.0
+offset_bottom = 217.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "A Monster appears "
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="CanvasLayer/TextBox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = -55.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = ">"
+
+[node name="Health_component" type="Node" parent="."]
+script = ExtResource("4_j3o4h")
+
+[node name="Text_Box_Controller" type="Node" parent="." node_paths=PackedStringArray("text_box", "text_box_label")]
+script = ExtResource("5_xmcdw")
+text_box = NodePath("../CanvasLayer/TextBox")
+text_box_label = NodePath("../CanvasLayer/TextBox/Label")
+
+[connection signal="pressed" from="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Attack" to="." method="_on_attack_pressed"]
