@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2bw83jy658ox"]
+
+[ext_resource type="Script" path="res://Components/Skills/Skill_sets/Skill_set_1.gd" id="1_1nxy0"]
+
+[node name="SkillSet1" type="Node"]
+script = ExtResource("1_1nxy0")

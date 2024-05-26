@@ -1,12 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0wak65hiot22"]
+[gd_scene load_steps=9 format=3 uid="uid://c0wak65hiot22"]
 
 [ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_31jtf"]
-[ext_resource type="PackedScene" uid="uid://cgu4hy3tejr73" path="res://Components/Worm.tscn" id="3_0214f"]
+[ext_resource type="PackedScene" uid="uid://gxky7r2ef7k0" path="res://Components/Worm.tscn" id="3_0214f"]
 [ext_resource type="Script" path="res://Scripts/Health_component.gd" id="4_j3o4h"]
-[ext_resource type="Script" path="res://Scripts/Skill_manager.gd" id="5_ko178"]
 [ext_resource type="Script" path="res://Scripts/Text_Box_Controller.gd" id="5_xmcdw"]
-[ext_resource type="PackedScene" uid="uid://d2bw83jy658ox" path="res://Components/Skills/Skill_sets/Skill_set_1.tscn" id="6_usqcd"]
-[ext_resource type="PackedScene" uid="uid://twea0uywcebw" path="res://Components/Skills/Standard Button.tscn" id="7_jmkqv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqivn"]
 bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
@@ -160,13 +157,7 @@ script = ExtResource("5_xmcdw")
 text_box = NodePath("../CanvasLayer/TextBox")
 text_box_label = NodePath("../CanvasLayer/TextBox/Label")
 
-[node name="Skill_manager" type="Node" parent="."]
-script = ExtResource("5_ko178")
-skill_set = ExtResource("6_usqcd")
-Standart_button = ExtResource("7_jmkqv")
-
 [connection signal="gui_input" from="CanvasLayer/PlayerContainer" to="Text_Box_Controller" method="_on_player_container_gui_input"]
 [connection signal="pressed" from="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Defende" to="." method="_on_defende_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Skills" to="." method="_on_skills_pressed"]
-[connection signal="pressed" from="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Skills" to="Skill_manager" method="_on_skills_pressed"]

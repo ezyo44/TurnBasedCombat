@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=18 format=3 uid="uid://dxkchj5dysant"]
 
-[ext_resource type="Script" path="res://Scripts/BaseEnemy.gd" id="1_llc1g"]
+[ext_resource type="Script" path="res://Scripts/Resources/BaseEnemy.gd" id="1_xwlvb"]
 [ext_resource type="Texture2D" uid="uid://boyrtlllnh3lm" path="res://Sprites/Fire Ball/Move.png" id="2_puv8j"]
 [ext_resource type="Texture2D" uid="uid://71xhyclbx0ql" path="res://Sprites/Fire Ball/Explosion.png" id="3_bdhdu"]
 
@@ -109,7 +109,7 @@ animations = [{
 }]
 
 [resource]
-script = ExtResource("1_llc1g")
+script = ExtResource("1_xwlvb")
 name = "Fire Ball"
 health = 30
 damage = 10

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=43 format=3 uid="uid://i7pi0tfcrh5r"]
 
-[ext_resource type="Script" path="res://Scripts/BaseEnemy.gd" id="1_ux0ga"]
+[ext_resource type="Script" path="res://Scripts/Resources/BaseEnemy.gd" id="1_hb0lt"]
 [ext_resource type="Texture2D" uid="uid://bh46pwncpixh" path="res://Sprites/Worm/Attack.png" id="2_4g5ys"]
 [ext_resource type="Texture2D" uid="uid://lyswv33laavu" path="res://Sprites/Worm/Idle.png" id="3_x8sum"]
 [ext_resource type="Texture2D" uid="uid://dsol43nl6msdd" path="res://Sprites/Worm/Death.png" id="4_hvmjr"]
@@ -282,7 +282,7 @@ animations = [{
 }]
 
 [resource]
-script = ExtResource("1_ux0ga")
+script = ExtResource("1_hb0lt")
 name = "Worm"
 health = 60
 damage = 15
