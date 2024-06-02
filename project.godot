@@ -18,13 +18,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerStats="*res://Scripts/playerStats.gd"
+Interface="*res://Scripts/Interface/interface.gd"
 
 [display]
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 window/handheld/orientation=1
 
 [rendering]

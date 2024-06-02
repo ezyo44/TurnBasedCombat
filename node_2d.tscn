@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0wak65hiot22"]
+[gd_scene load_steps=15 format=3 uid="uid://c0wak65hiot22"]
 
 [ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_31jtf"]
 [ext_resource type="PackedScene" uid="uid://cgu4hy3tejr73" path="res://Components/Worm.tscn" id="3_0214f"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Text_Box_Controller.gd" id="5_xmcdw"]
 [ext_resource type="PackedScene" uid="uid://d2bw83jy658ox" path="res://Components/Skills/Skill_sets/Skill_set_1.tscn" id="6_usqcd"]
 [ext_resource type="PackedScene" uid="uid://twea0uywcebw" path="res://Components/Skills/Standard Button.tscn" id="7_jmkqv"]
+[ext_resource type="PackedScene" uid="uid://dvd5re2kuajj4" path="res://Components/mana_component.tscn" id="8_go8t4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqivn"]
 bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
@@ -15,19 +16,26 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3obm3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws80l"]
 bg_color = Color(0.988235, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eflyk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1f7ki"]
 bg_color = Color(2.16588e-07, 0.64134, 0.11044, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3obm3"]
+bg_color = Color(0.513726, 0.0196078, 0.027451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eflyk"]
+bg_color = Color(0, 0.643137, 0.956863, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2cla"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="Battle_scene" type="Node2D" node_paths=PackedStringArray("text_box_controller", "health_controller")]
+[node name="Battle_scene" type="Node2D" node_paths=PackedStringArray("text_box_controller", "health_controller", "mana_controller")]
 script = ExtResource("1_31jtf")
 text_box_controller = NodePath("Text_Box_Controller")
 health_controller = NodePath("Health_component")
+mana_controller = NodePath("Mana_component")
 Enemy_scene = ExtResource("3_0214f")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
@@ -73,7 +81,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -255.0
+offset_top = -289.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
@@ -86,8 +94,8 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 theme_override_font_sizes/font_size = 32
-theme_override_styles/background = SubResource("StyleBoxFlat_3obm3")
-theme_override_styles/fill = SubResource("StyleBoxFlat_eflyk")
+theme_override_styles/background = SubResource("StyleBoxFlat_ws80l")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1f7ki")
 value = 100.0
 show_percentage = false
 
@@ -100,6 +108,35 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "HP: 100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="CanvasLayer/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="ManaBar" type="ProgressBar" parent="CanvasLayer/PlayerContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_3obm3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eflyk")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayerContainer/VBoxContainer/ManaBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "MP: 100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -152,6 +189,28 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
 
+[node name="SkillPanel" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 78.0
+offset_top = -348.0
+offset_right = -48.0
+offset_bottom = 307.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/SkillPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SkillPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 60
+
 [node name="Health_component" type="Node" parent="."]
 script = ExtResource("4_j3o4h")
 
@@ -164,6 +223,8 @@ text_box_label = NodePath("../CanvasLayer/TextBox/Label")
 script = ExtResource("5_ko178")
 skill_set = ExtResource("6_usqcd")
 Standart_button = ExtResource("7_jmkqv")
+
+[node name="Mana_component" parent="." instance=ExtResource("8_go8t4")]
 
 [connection signal="gui_input" from="CanvasLayer/PlayerContainer" to="Text_Box_Controller" method="_on_player_container_gui_input"]
 [connection signal="pressed" from="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Attack" to="." method="_on_attack_pressed"]

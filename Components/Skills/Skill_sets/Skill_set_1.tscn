@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2bw83jy658ox"]
+[gd_scene load_steps=5 format=3 uid="uid://d2bw83jy658ox"]
 
 [ext_resource type="Script" path="res://Components/Skills/Skill_sets/Skill_set_1.gd" id="1_1nxy0"]
 [ext_resource type="PackedScene" uid="uid://gcspgorqi7ak" path="res://Components/Skills/Skills/Heal.tscn" id="2_3uuuh"]
 [ext_resource type="PackedScene" uid="uid://pvi36gixq5pl" path="res://Components/Skills/Skills/Double Attack.tscn" id="3_xjihl"]
+[ext_resource type="PackedScene" uid="uid://d2e62lximd1nu" path="res://Components/Skills/Skills/Sir Lion’s Hammer.tscn" id="4_yihj1"]
 
 [node name="SkillSet1" type="Node"]
 script = ExtResource("1_1nxy0")
-skills = Array[PackedScene]([ExtResource("2_3uuuh"), ExtResource("3_xjihl")])
+skills = Array[PackedScene]([ExtResource("2_3uuuh"), ExtResource("3_xjihl"), ExtResource("4_yihj1")])

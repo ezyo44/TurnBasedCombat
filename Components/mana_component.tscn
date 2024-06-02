@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvd5re2kuajj4"]
+
+[ext_resource type="Script" path="res://Scripts/Mana_component.gd" id="1_riso5"]
+
+[node name="Mana_component" type="Node"]
+script = ExtResource("1_riso5")

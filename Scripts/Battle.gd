@@ -5,10 +5,12 @@ extends Node2D
 @onready var player_health_bar=$CanvasLayer/PlayerContainer/VBoxContainer/ProgressBar
 @onready var enemy_health_bar
 @onready var HboxContainer= $CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer
+@onready var mana_bar=$CanvasLayer/PlayerContainer/VBoxContainer/ManaBar
 
 @export var text_box_controller:Text_box_controller
 
 @export var health_controller:Health_component
+@export var mana_controller:Mana_component
 @export var Enemy_scene:PackedScene
 
 var enemy_container
@@ -21,12 +23,13 @@ signal textbox_closed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+		
 	enemy_instance=Enemy_scene.instantiate()
 
 	get_node("CanvasLayer2").add_child(Enemy_scene.instantiate())
 	enemy_container=get_node("CanvasLayer2/EnemyContainer")
 	health_controller._set_health(player_health_bar,PlayerStats.current_health,PlayerStats.Max_health)
+	mana_controller._set_mana(mana_bar,PlayerStats.current_mana,PlayerStats.max_mana)
 	text_box_controller._hide_text() 
 	text_box_controller._display_text("A " + enemy_container.enemy.name +" is Challanging you")
 	
