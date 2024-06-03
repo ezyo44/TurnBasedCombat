@@ -98,7 +98,8 @@ func _double_attack():
 		player_turn_finished.emit()
 
 func _close_game():
-	get_tree().quit()
+	SceneSwitcher.switch_scene("res://Map_Scene.tscn")
+	#get_tree().quit()
 
 
 

@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://ba511uokfht7r"]
+
+[ext_resource type="Texture2D" uid="uid://2ja6dt07xidb" path="res://Sprites/mapSprites/wall.png" id="1_6c7v4"]
+[ext_resource type="Script" path="res://Map_Scene.gd" id="1_spi53"]
+[ext_resource type="PackedScene" uid="uid://c0wak65hiot22" path="res://node_2d.tscn" id="2_7ybkt"]
+[ext_resource type="Texture2D" uid="uid://dgtsupb7g6um0" path="res://Sprites/mapSprites/EnemyUnselected.png" id="2_cmy3r"]
+[ext_resource type="Texture2D" uid="uid://q70pwiq2u4mc" path="res://Sprites/mapSprites/EnemySelected.png" id="3_dwbuo"]
+[ext_resource type="Texture2D" uid="uid://d16ovbmys0nv7" path="res://Sprites/mapSprites/connectingLine.png" id="4_dftyy"]
+[ext_resource type="Texture2D" uid="uid://ii6ekj2fo4ht" path="res://Sprites/mapSprites/skillRoomUnselected.png" id="5_vpwdy"]
+[ext_resource type="Texture2D" uid="uid://c6teemxl481ag" path="res://Sprites/mapSprites/skillRoomSelected.png" id="6_kfag4"]
+[ext_resource type="Texture2D" uid="uid://dl3ln8375fuqx" path="res://Sprites/mapSprites/strongEnemyUnselected.png" id="7_u3a25"]
+[ext_resource type="Texture2D" uid="uid://bsel0mefdnl8y" path="res://Sprites/mapSprites/strongEnemySelected.png" id="8_elnli"]
+
+[node name="MapScene" type="Node2D"]
+script = ExtResource("1_spi53")
+battle_scene = ExtResource("2_7ybkt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_6c7v4")
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/PanelContainer/TextureRect"]
+layout_mode = 2
+offset_right = 720.0
+offset_bottom = 1280.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer"]
+custom_minimum_size = Vector2(300, 1280)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = -53
+
+[node name="NormalEnemy" type="TextureButton" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_cmy3r")
+texture_pressed = ExtResource("3_dwbuo")
+texture_disabled = ExtResource("3_dwbuo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Line" type="TextureRect" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+texture = ExtResource("4_dftyy")
+expand_mode = 1
+
+[node name="SkillRoom" type="TextureButton" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture_normal = ExtResource("5_vpwdy")
+texture_pressed = ExtResource("6_kfag4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Line2" type="TextureRect" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+texture = ExtResource("4_dftyy")
+expand_mode = 1
+
+[node name="StrongEnemy" type="TextureButton" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture_normal = ExtResource("7_u3a25")
+texture_pressed = ExtResource("8_elnli")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer/NormalEnemy" to="." method="_on_normal_enemy_pressed"]
