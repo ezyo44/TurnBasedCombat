@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp8yjestvouwv"]
+
+[ext_resource type="Texture2D" uid="uid://d16ovbmys0nv7" path="res://Sprites/mapSprites/connectingLine.png" id="1_4o5qm"]
+
+[node name="Line" type="TextureRect"]
+custom_minimum_size = Vector2(400, 400)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_4o5qm")
+expand_mode = 1

@@ -1,5 +1,5 @@
 extends VBoxContainer
-class_name Worm
+class_name Golem
 
 @onready var enemy_sprite:AnimatedSprite2D=$AnimatedSprite2D
 
@@ -53,6 +53,7 @@ func _enable_buttons():
 		skills_button.disabled=false
 		
 func _die():
+	print("golem dead")
 	died=true
 	enemy_sprite.play("die")
 	await await enemy_sprite.animation_finished

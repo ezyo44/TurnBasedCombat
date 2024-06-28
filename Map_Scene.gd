@@ -1,17 +1,14 @@
 extends Node2D
 
+@onready var scroll_container = $CanvasLayer/PanelContainer/TextureRect/ScrollContainer
+@onready var saverLoader = $SaverLoader as SaverLoader
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	scroll_container.scroll_vertical = scroll_container.get_v_scroll_bar().max_value
+	saverLoader.load_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 
-func _on_normal_enemy_pressed():
-	var normalEnemy=$CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer/NormalEnemy
-	normalEnemy.disabled=true
-	SceneSwitcher.switch_scene("res://node_2d.tscn")
-	 # Replace with function body.

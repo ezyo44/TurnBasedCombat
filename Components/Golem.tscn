@@ -1,0 +1,143 @@
+[gd_scene load_steps=16 format=3 uid="uid://b4pi71rnrk1ok"]
+
+[ext_resource type="Script" path="res://Scripts/Golem.gd" id="1_hwdo6"]
+[ext_resource type="Resource" uid="uid://dxkchj5dysant" path="res://Components/Resources/Golem.tres" id="2_otsht"]
+[ext_resource type="Texture2D" uid="uid://d2pwk62eiokjd" path="res://Sprites/Golem_1/Blue/White_Swoosh_VFX/Golem_1_idle.png" id="3_3bbyq"]
+[ext_resource type="PackedScene" uid="uid://bcowd84mh73p" path="res://Components/health_component.tscn" id="4_ot6sr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlrw0"]
+bg_color = Color(0.988235, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o885"]
+bg_color = Color(0, 0.639826, 0.173702, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gysfb"]
+atlas = ExtResource("3_3bbyq")
+region = Rect2(0, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qppg0"]
+atlas = ExtResource("3_3bbyq")
+region = Rect2(90, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00xxn"]
+atlas = ExtResource("3_3bbyq")
+region = Rect2(180, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa2dy"]
+atlas = ExtResource("3_3bbyq")
+region = Rect2(270, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvt0s"]
+atlas = ExtResource("3_3bbyq")
+region = Rect2(360, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsk5m"]
+atlas = ExtResource("3_3bbyq")
+region = Rect2(450, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wr1l"]
+atlas = ExtResource("3_3bbyq")
+region = Rect2(540, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go56a"]
+atlas = ExtResource("3_3bbyq")
+region = Rect2(630, 0, 90, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2ida"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gysfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qppg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00xxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qa2dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvt0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsk5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wr1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go56a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyContainer" type="VBoxContainer" node_paths=PackedStringArray("enemy_health_bar", "health_controller") groups=["Enemies"]]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 265.0
+offset_right = -8.0
+offset_bottom = 900.0
+grow_horizontal = 2
+script = ExtResource("1_hwdo6")
+enemy_health_bar = NodePath("HBoxContainer/ProgressBar")
+health_controller = NodePath("Health_component")
+enemy = ExtResource("2_otsht")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.2
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_dlrw0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8o885")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HBoxContainer/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "HP: 100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+texture_filter = 1
+position = Vector2(361, 222)
+scale = Vector2(7.86944, 9.44774)
+sprite_frames = SubResource("SpriteFrames_t2ida")
+
+[node name="Health_component" parent="." instance=ExtResource("4_ot6sr")]

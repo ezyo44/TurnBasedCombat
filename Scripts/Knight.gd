@@ -1,5 +1,5 @@
 extends VBoxContainer
-class_name Worm
+class_name Knight
 
 @onready var enemy_sprite:AnimatedSprite2D=$AnimatedSprite2D
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://l58obvvuntep"]
+
+[ext_resource type="Texture2D" uid="uid://dl3ln8375fuqx" path="res://Sprites/mapSprites/strongEnemyUnselected.png" id="1_ja155"]
+[ext_resource type="Texture2D" uid="uid://bsel0mefdnl8y" path="res://Sprites/mapSprites/strongEnemySelected.png" id="2_cecf2"]
+[ext_resource type="Script" path="res://MapScenes/strong_enemy.gd" id="3_kln41"]
+
+[node name="StrongEnemy" type="TextureButton" groups=["game_events"]]
+custom_minimum_size = Vector2(700, 700)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("1_ja155")
+texture_pressed = ExtResource("2_cecf2")
+texture_disabled = ExtResource("2_cecf2")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_kln41")

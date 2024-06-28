@@ -1,4 +1,5 @@
 extends Node2D
+class_name Battle
 
 @onready var text_box = $CanvasLayer/TextBox
 @onready var text_box_label=$CanvasLayer/TextBox/Label

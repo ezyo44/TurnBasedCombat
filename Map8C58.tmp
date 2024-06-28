@@ -1,15 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://ba511uokfht7r"]
+[gd_scene load_steps=10 format=3 uid="uid://ba511uokfht7r"]
 
 [ext_resource type="Texture2D" uid="uid://2ja6dt07xidb" path="res://Sprites/mapSprites/wall.png" id="1_6c7v4"]
 [ext_resource type="Script" path="res://Map_Scene.gd" id="1_spi53"]
 [ext_resource type="PackedScene" uid="uid://l58obvvuntep" path="res://MapScenes/strong_enemy.tscn" id="3_fny7i"]
-[ext_resource type="PackedScene" uid="uid://bx510d86i5gff" path="res://Components/Knight.tscn" id="4_g1tet"]
+[ext_resource type="Texture2D" uid="uid://d16ovbmys0nv7" path="res://Sprites/mapSprites/connectingLine.png" id="4_dftyy"]
 [ext_resource type="PackedScene" uid="uid://bp8yjestvouwv" path="res://MapScenes/line.tscn" id="4_ghjs8"]
 [ext_resource type="PackedScene" uid="uid://cqxp7hh241j48" path="res://MapScenes/normal_enemy_2.tscn" id="5_jt1qr"]
 [ext_resource type="PackedScene" uid="uid://bxjjq7r4y766g" path="res://MapScenes/skill_room.tscn" id="6_72hqg"]
-[ext_resource type="PackedScene" uid="uid://b4pi71rnrk1ok" path="res://Components/Golem.tscn" id="6_j4mpd"]
 [ext_resource type="PackedScene" uid="uid://birwqhqilfiup" path="res://MapScenes/normal_enemy.tscn" id="7_votyv"]
-[ext_resource type="PackedScene" uid="uid://cgu4hy3tejr73" path="res://Components/Worm.tscn" id="8_rgcup"]
 [ext_resource type="Script" path="res://Scripts/Save_System/saver_loader.gd" id="10_vhssu"]
 
 [node name="MapScene" type="Node2D"]
@@ -40,7 +38,7 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer"]
-custom_minimum_size = Vector2(720, 1280)
+custom_minimum_size = Vector2(700, 1280)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
@@ -48,30 +46,34 @@ theme_override_constants/separation = -53
 
 [node name="StrongEnemy" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer" instance=ExtResource("3_fny7i")]
 layout_mode = 2
-Enemy_scene = ExtResource("4_g1tet")
 
-[node name="Line3" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer" instance=ExtResource("4_ghjs8")]
+[node name="Line" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer" instance=ExtResource("4_ghjs8")]
 layout_mode = 2
-size_flags_vertical = 6
 
 [node name="NormalEnemy2" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer" instance=ExtResource("5_jt1qr")]
 layout_mode = 2
-Enemy_scene = ExtResource("6_j4mpd")
 
-[node name="Line2" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer" instance=ExtResource("4_ghjs8")]
+[node name="Line3" type="TextureRect" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_dftyy")
+expand_mode = 1
 
 [node name="SkillRoom" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer" instance=ExtResource("6_72hqg")]
 layout_mode = 2
 
-[node name="Line" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer" instance=ExtResource("4_ghjs8")]
+[node name="Line2" type="TextureRect" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_dftyy")
+expand_mode = 1
 
 [node name="NormalEnemy" parent="CanvasLayer/PanelContainer/TextureRect/ScrollContainer/VBoxContainer" instance=ExtResource("7_votyv")]
 layout_mode = 2
-Enemy_scene = ExtResource("8_rgcup")
 
 [node name="SaverLoader" type="Node" parent="."]
 script = ExtResource("10_vhssu")

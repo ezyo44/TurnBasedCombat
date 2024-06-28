@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://c0wak65hiot22"]
 
 [ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_31jtf"]
-[ext_resource type="PackedScene" uid="uid://cgu4hy3tejr73" path="res://Components/Worm.tscn" id="3_0214f"]
+[ext_resource type="PackedScene" uid="uid://bx510d86i5gff" path="res://Components/Knight.tscn" id="2_axumq"]
 [ext_resource type="Script" path="res://Scripts/Health_component.gd" id="4_j3o4h"]
 [ext_resource type="Script" path="res://Scripts/Skill_manager.gd" id="5_ko178"]
 [ext_resource type="Script" path="res://Scripts/Text_Box_Controller.gd" id="5_xmcdw"]
@@ -36,7 +36,7 @@ script = ExtResource("1_31jtf")
 text_box_controller = NodePath("Text_Box_Controller")
 health_controller = NodePath("Health_component")
 mana_controller = NodePath("Mana_component")
-Enemy_scene = ExtResource("3_0214f")
+Enemy_scene = ExtResource("2_axumq")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
