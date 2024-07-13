@@ -102,6 +102,7 @@ func _enemy_defeated():
 	#get_tree().quit()
 
 func _notification(what):
+
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		enemy_container.was_scene_switched = true
 		saverLoader.save_player_states()
@@ -110,6 +111,12 @@ func _notification(what):
 		enemy_container.was_scene_switched = true
 		saverLoader.save_player_states()
 		saverLoader.save_game()
+	elif what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
+		enemy_container.was_scene_switched = true
+		saverLoader.save_player_states()
+		saverLoader.save_game()
+		
+
 
 
 func _on_skills_pressed():
