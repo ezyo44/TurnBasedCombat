@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb78nnnu4rlyf"]
+
+[ext_resource type="Script" path="res://Scripts/Skill_manager.gd" id="1_kndgd"]
+[ext_resource type="PackedScene" uid="uid://twea0uywcebw" path="res://Components/Skills/Standard Button.tscn" id="3_mtayp"]
+
+[node name="Skill_manager" type="Node"]
+script = ExtResource("1_kndgd")
+Standart_button = ExtResource("3_mtayp")

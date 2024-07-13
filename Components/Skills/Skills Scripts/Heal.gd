@@ -8,6 +8,7 @@ var implements = Interface.SkillInterface
 @onready var mana_bar:ProgressBar
 @onready var mana_controller:Mana_component
 var mana_cost
+signal disable_buttons
 @onready var name_of=""
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,12 +22,14 @@ func _process(delta):
 
 func _effect():
 	if PlayerStats.player_turn && mana_cost<=mana_bar.value: 
+		disable_buttons.emit()
 		mana_controller._spend_energy(mana_bar,mana_cost)
 		if player_health_bar.value==player_health_bar.max_value:
 			text_box_controller._display_text("Player Health already full")
 		else :
-			text_box_controller._display_text("The "+ PlayerStats.player_name +" healed for %d " % 10)
-			health_controller._heal(player_health_bar,10)
+			text_box_controller._display_text("The "+ PlayerStats.player_name +" healed for %d " % 30)
+			health_controller._heal(player_health_bar,30)
 
 			await get_tree().create_timer(1).timeout
 			PlayerStats.player_turn_finished.emit()
+			

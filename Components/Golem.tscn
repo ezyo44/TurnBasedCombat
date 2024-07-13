@@ -84,7 +84,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="EnemyContainer" type="VBoxContainer" node_paths=PackedStringArray("enemy_health_bar", "health_controller") groups=["Enemies"]]
+[node name="EnemyContainer" type="VBoxContainer" node_paths=PackedStringArray("enemy_health_bar", "health_controller") groups=["Enemies", "game_events"]]
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 265.0

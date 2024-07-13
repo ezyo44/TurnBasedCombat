@@ -1,7 +1,7 @@
 class_name StrongEnemy
 extends TextureButton
 
-@onready var saverLoader =  $"../../../../../../SaverLoader" as SaverLoader
+@onready var saverLoader =  $"../../../../../../SaverLoader" as SaverLoaderMapScene
 @export var Enemy_scene:PackedScene
 
 # Called when the node enters the scene tree for the first time.

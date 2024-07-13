@@ -10,6 +10,8 @@ func _ready():
 func switch_scene_choose_Enemy(res_path, enemy:PackedScene):
 	
 	call_deferred("_deffered_switch_scene_for_Enemy",res_path,enemy)
+
+
 	
 func _deffered_switch_scene_for_Enemy(res_path, enemy:PackedScene):
 	current_scene.free()

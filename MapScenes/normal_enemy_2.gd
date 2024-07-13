@@ -1,6 +1,6 @@
 extends TextureButton
 
-@onready var saverLoader =  $"../../../../../../SaverLoader" as SaverLoader
+@onready var saverLoader =  $"../../../../../../SaverLoader" as SaverLoaderMapScene
 @export var Enemy_scene:PackedScene
 
 
@@ -29,5 +29,10 @@ func on_load_game(Saved_data:SavedData):
 	
 func _pressed():
 	self.disabled=true
+	enable_next_button()
 	saverLoader.save_game()
 	SceneSwitcher.switch_scene_choose_Enemy("res://node_2d.tscn",Enemy_scene)
+	
+func enable_next_button():
+	$"../StrongEnemy".disabled=false
+

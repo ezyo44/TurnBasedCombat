@@ -10,9 +10,10 @@ var implements = Interface.SkillInterface
 var enemy_container
 var mana_cost:int
 @onready var name_of=""
+signal disable_buttons
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mana_cost=5
+	mana_cost=4
 	name_of="Double Attack" # Replace with function body.
 	
 
@@ -26,11 +27,11 @@ func _effect():
 		var _double_damage_value=PlayerStats.damage*2-PlayerStats.damage/2
 		text_box_controller._display_text("The "+ enemy_container.enemy.name + 
 		" was Attacked twice for %d damage" % _double_damage_value )
-		
+		disable_buttons.emit()
 		PlayerStats.attack_enemy_twice.emit()
 		
 		PlayerStats.player_turn=false
 
 		await get_tree().create_timer(1).timeout
 		PlayerStats.player_turn_finished.emit()
-
+		

@@ -1,6 +1,6 @@
 extends TextureButton
 
-@onready var saverLoader =  $"../../../../../../SaverLoader" as SaverLoader
+@onready var saverLoader =  $"../../../../../../SaverLoader" as SaverLoaderMapScene
 @export var Enemy_scene:PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,7 +10,6 @@ func _process(delta):
 	pass
 
 func on_save_game(saved_data:Array[SavedData]):
-	print("on save game called")
 	var my_data = SavedData.new()
 	my_data.is_pressed=self.disabled
 	my_data.scene_path=self.scene_file_path
@@ -27,5 +26,9 @@ func on_before_load_game():
 	
 func _pressed():
 	self.disabled=true
+	enable_next_button()
 	saverLoader.save_game()
 	SceneSwitcher.switch_scene_choose_Enemy("res://node_2d.tscn",Enemy_scene)
+	
+func enable_next_button():
+	$"../SkillRoom".disabled=false

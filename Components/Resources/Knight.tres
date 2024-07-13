@@ -373,5 +373,5 @@ animations = [{
 script = ExtResource("1_3vvdl")
 name = "knight"
 health = 100
-damage = 10
+damage = 30
 sprite = SubResource("SpriteFrames_olgyi")

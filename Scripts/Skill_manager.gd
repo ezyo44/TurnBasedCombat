@@ -1,15 +1,14 @@
+class_name SkillManager
 extends Node
 
-@export var skill_set:PackedScene
-@onready var VboxContainer= $"../CanvasLayer/SkillPanel/ScrollContainer/VBoxContainer"
+@onready var VboxContainer =$"../CanvasLayer/SkillPanel/ScrollContainer/VBoxContainer"
 @onready var SkillPanel=$"../CanvasLayer/SkillPanel"
 @export var Standart_button:PackedScene
+
 var button
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
-	
-	self.add_child(skill_set.instantiate())
 	_check_interface()
 
 	 # Replace with function body.
@@ -24,8 +23,11 @@ func _check_interface():
 			Interface.node_implements_interface(skill,Interface.SkillInterface)
 
 func _on_skills_pressed():
+	for skill_set in PlayerStats.skills:
+		if(skill_set != null):
+			self.add_child(skill_set.instantiate())
+			
 	_skill_pressed()
-	
 	for skill_sets in self.get_children():
 		for skill in skill_sets.get_children():
 			if VboxContainer.get_child_count() !=skill_sets.get_child_count():
@@ -48,13 +50,16 @@ func _init_skills():
 			skill.health_controller=$"../Health_component"
 			skill.mana_bar=$"../CanvasLayer/PlayerContainer/VBoxContainer/ManaBar"
 			skill.mana_controller=$"../Mana_component"
+			skill.disable_buttons.connect(_disable_buttons)
 			if "enemy_container" in skill:
 				skill.enemy_container=get_tree().get_first_node_in_group("Enemies")
 				
 func _skill_pressed():
 		SkillPanel.visible=!SkillPanel.visible
-		for _i in VboxContainer.get_children():
-			
-			print(_i.name)
-			
-		
+
+
+func _disable_buttons():
+		$"../CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Attack".disabled=true
+		$"../CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Defende".disabled=true
+		$"../CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Skills".disabled=true
+

@@ -1,11 +1,11 @@
 extends Node
 
 var player_name="Warrior"
-var current_health = 80
-var Max_health=80
+var current_health = 110
+var Max_health=110
 var damage=20
-var max_mana = 20
-var current_mana = 20
+var max_mana = 30
+var current_mana = 30
 var player_turn=true
 var is_defending=false
 var skills:Array[PackedScene]

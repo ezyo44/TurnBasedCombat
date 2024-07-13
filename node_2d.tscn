@@ -1,13 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://c0wak65hiot22"]
+[gd_scene load_steps=14 format=3 uid="uid://c0wak65hiot22"]
 
 [ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_31jtf"]
 [ext_resource type="PackedScene" uid="uid://bx510d86i5gff" path="res://Components/Knight.tscn" id="2_axumq"]
 [ext_resource type="Script" path="res://Scripts/Health_component.gd" id="4_j3o4h"]
-[ext_resource type="Script" path="res://Scripts/Skill_manager.gd" id="5_ko178"]
+[ext_resource type="PackedScene" uid="uid://bb78nnnu4rlyf" path="res://Components/skill_manager.tscn" id="5_l30qy"]
 [ext_resource type="Script" path="res://Scripts/Text_Box_Controller.gd" id="5_xmcdw"]
-[ext_resource type="PackedScene" uid="uid://d2bw83jy658ox" path="res://Components/Skills/Skill_sets/Skill_set_1.tscn" id="6_usqcd"]
-[ext_resource type="PackedScene" uid="uid://twea0uywcebw" path="res://Components/Skills/Standard Button.tscn" id="7_jmkqv"]
 [ext_resource type="PackedScene" uid="uid://dvd5re2kuajj4" path="res://Components/mana_component.tscn" id="8_go8t4"]
+[ext_resource type="Script" path="res://Scripts/Save_System/Saver_loader_battle.gd" id="9_f30rq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqivn"]
 bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
@@ -96,7 +95,8 @@ size_flags_stretch_ratio = 0.3
 theme_override_font_sizes/font_size = 32
 theme_override_styles/background = SubResource("StyleBoxFlat_ws80l")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1f7ki")
-value = 100.0
+max_value = 110.0
+value = 110.0
 show_percentage = false
 
 [node name="Label" type="Label" parent="CanvasLayer/PlayerContainer/VBoxContainer/ProgressBar"]
@@ -219,15 +219,14 @@ script = ExtResource("5_xmcdw")
 text_box = NodePath("../CanvasLayer/TextBox")
 text_box_label = NodePath("../CanvasLayer/TextBox/Label")
 
-[node name="Skill_manager" type="Node" parent="."]
-script = ExtResource("5_ko178")
-skill_set = ExtResource("6_usqcd")
-Standart_button = ExtResource("7_jmkqv")
+[node name="Skill_manager" parent="." instance=ExtResource("5_l30qy")]
 
 [node name="Mana_component" parent="." instance=ExtResource("8_go8t4")]
+
+[node name="SaverLoader" type="Node" parent="."]
+script = ExtResource("9_f30rq")
 
 [connection signal="gui_input" from="CanvasLayer/PlayerContainer" to="Text_Box_Controller" method="_on_player_container_gui_input"]
 [connection signal="pressed" from="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Defende" to="." method="_on_defende_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Skills" to="." method="_on_skills_pressed"]
-[connection signal="pressed" from="CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Skills" to="Skill_manager" method="_on_skills_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ba511uokfht7r"]
+[gd_scene load_steps=11 format=3 uid="uid://ba511uokfht7r"]
 
 [ext_resource type="Texture2D" uid="uid://2ja6dt07xidb" path="res://Sprites/mapSprites/wall.png" id="1_6c7v4"]
 [ext_resource type="Script" path="res://Map_Scene.gd" id="1_spi53"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://b4pi71rnrk1ok" path="res://Components/Golem.tscn" id="6_j4mpd"]
 [ext_resource type="PackedScene" uid="uid://birwqhqilfiup" path="res://MapScenes/normal_enemy.tscn" id="7_votyv"]
 [ext_resource type="PackedScene" uid="uid://cgu4hy3tejr73" path="res://Components/Worm.tscn" id="8_rgcup"]
-[ext_resource type="Script" path="res://Scripts/Save_System/saver_loader_Map.gd" id="10_vhssu"]
 
 [node name="MapScene" type="Node2D"]
 script = ExtResource("1_spi53")
@@ -74,4 +73,3 @@ layout_mode = 2
 Enemy_scene = ExtResource("8_rgcup")
 
 [node name="SaverLoader" type="Node" parent="."]
-script = ExtResource("10_vhssu")

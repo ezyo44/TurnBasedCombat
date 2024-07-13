@@ -9,6 +9,7 @@ var implements = Interface.SkillInterface
 @onready var mana_controller:Mana_component
 var mana_cost
 @onready var name_of=""
+signal disable_buttons
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mana_cost=6
@@ -21,3 +22,9 @@ func _process(delta):
 func _effect():
 	if PlayerStats.player_turn && mana_cost<=mana_bar.value: 
 		mana_controller._spend_energy(mana_bar,mana_cost)
+
+func _disable_buttons():
+		$CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Attack.disabled=true
+		$CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Defende.disabled=true
+		$CanvasLayer/PlayerContainer/VBoxContainer/HBoxContainer/Skills.disabled=true
+		print("Buttons Disabled")
